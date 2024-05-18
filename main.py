@@ -16,17 +16,22 @@ def listar(a):
     else:
         return False
         
-def stay_or_no_op():
+def stay_or_no_op(serviço):
     while True:
-        x = str(input('''
-            Deseja fazer mais uma listagem?(s/n) '''))
+        x = str(input(f'''
+            Deseja {serviço} mais arquivos? (s/n) '''))
         if x == "s":
             print("Ok")
             time.sleep(1)
+            return True
             break
+            
         elif x == "n":
             print("Ok")
+            return False
             break
+        else:
+            print(erro_resposta)
 
             
 
@@ -34,6 +39,10 @@ def stay_or_no_op():
 version = ('1.0') #Versão programa
 
 ops = ['1', '2', '3'] #Opções primárias do programa
+ops_nomes = ['Listar', 'Renomear']
+
+erro_resposta = "Resposta Inválida, vamos tentar novamente?"
+
 
 # Saudação
 saudar(version)
@@ -66,7 +75,12 @@ while True:
                             ''')
                         print(listagem)
                         time.sleep(3)
-                        stay_or_no_op()
+                        stay_or_no_op(ops_nomes[0])
+                        if stay_or_no_op == True:
+                            print("Certo")
+                        elif stay_or_no_op == False:
+                            print("Certo agora você")
+
 
                             
             case '2':
@@ -81,7 +95,7 @@ while True:
                 break
 
     else:
-        "Resposta errada, vamos tentar novamente?"
+        print(erro_resposta)
         
 
 
